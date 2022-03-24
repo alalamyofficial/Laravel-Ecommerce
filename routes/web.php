@@ -36,6 +36,15 @@ Route::get('/cart/update/{itemId}','CartController@update')
 Route::get('/checkout','CartController@checkout')
             ->name('cart.checkout')->middleware('auth');   
 
+Route::get('/cart/apply-coupon', 'CartController@applyCoupon')
+            ->name('cart.coupon')->middleware('auth');
+
+            
+//Products
+Route::get('/products/search', 'ProductController@search')->name('products.search');
+Route::resource('products', 'ProductController');
+
+
 //Orders            
 Route::resource('/orders','OrderController')->middleware('auth');   
         

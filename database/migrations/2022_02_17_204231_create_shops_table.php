@@ -18,9 +18,10 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->boolean('is_active')->default(false);
-
             $table->text('description')->nullable();
             $table->float('rating')->nullable();
             $table->timestamps();
